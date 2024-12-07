@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "customers")
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,10 @@ public class Customers {
     @OneToMany(mappedBy ="customers")
     @JsonIgnore
     private List<Orders> ordersList;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn( name = "user_id", referencedColumnName = "id")
+    private User user;
 
     public String getName() {
         return name;
@@ -65,5 +70,13 @@ public class Customers {
 
     public void setOrdersList(List<Orders> ordersList) {
         this.ordersList = ordersList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

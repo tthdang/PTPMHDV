@@ -6,6 +6,7 @@ public class CustomerCreationRequest {
     private String phone ;
     private String address;
 
+
     public String getName() {
         return name;
     }
@@ -37,4 +38,5 @@ public class CustomerCreationRequest {
     public void setAddress(String address) {
         this.address = address;
     }
+
 }
